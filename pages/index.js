@@ -1,7 +1,10 @@
+import SearchBar from '../components/SearchBar';
+
 export default function Index() {
   return (
     <div>
-      <p>Hello Next.js</p>
+      <p>Hello, world</p>
+      <SearchBar query='build a wall'/>
     </div>
   );
 }
