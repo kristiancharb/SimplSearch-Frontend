@@ -1,10 +1,12 @@
 import SearchBar from '../components/SearchBar';
+import Layout from '../components/Layout';
 
 export default function Index() {
   return (
     <div>
-      <p>Hello, world</p>
-      <SearchBar query='build a wall'/>
+      <Layout>
+        <SearchBar />
+      </Layout>
     </div>
   );
 }
