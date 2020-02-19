@@ -1,32 +1,42 @@
 import { useRouter } from 'next/router';
 import SearchBar from '../components/SearchBar';
 import Layout from '../components/Layout';
-import HeadImport from '../components/HeadImport';
+import Paper from '@material-ui/core/Paper';
 import fetch from 'isomorphic-unfetch';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    padding:  theme.spacing(1)
+  }
+}));
 
 const baseUrl = 'http://localhost:8000';
 
 const Search = props => {
   const router = useRouter();
+  const classes = useStyles();
 
   return (
-    <div>
-      <HeadImport />
-      <Layout>
-        <SearchBar value={router.query.query}/>
-        <h3>Results for: {router.query.query}</h3>
-        {props.status === 200 && props.results ?
-          props.results.map(result => (
-          <div key={result.Id}>
-            <h4>{result.Title}</h4>
-            <p>{result.Contents}</p>
-            <br></br>
-          </div>
-        )) :
-        <p>Sorry, there was a problem fetching results :(</p>
-        }
-      </Layout>
-    </div>
+    <Layout>
+      <SearchBar value={router.query.query}/>
+      <br></br>
+      <Paper elevation={3}>
+        <div className={classes.container}>
+          <h3>Results for: {router.query.query}</h3>
+          {props.status === 200 && props.results ?
+            props.results.map(result => (
+            <div key={result.Id}>
+              <h4>{result.Title}</h4>
+              <p>{result.Contents}</p>
+              <br></br>
+            </div>
+          )) :
+          <p>Sorry, there was a problem fetching results :(</p>
+          }
+        </div>
+      </Paper>
+    </Layout>
   );
 };
 

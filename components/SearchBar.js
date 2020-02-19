@@ -25,7 +25,7 @@ const SearchBar = props => {
           <TextField id="standard-basic" value={value} onChange={handleChange} fullWidth/>
         </Grid>
         <Grid item xs={2}>
-          <Button type='submit' variant='contained' fullWidth>Search</Button>
+          <Button type='submit' variant='outlined' fullWidth>Search</Button>
         </Grid>
       </Grid>
     </form>
