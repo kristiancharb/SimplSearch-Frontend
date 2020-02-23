@@ -4,8 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,9 +16,15 @@ const useStyles = makeStyles(theme => ({
   },
   heading: {
     paddingBottom:  theme.spacing(1),
-    backgroundColor: blueGrey[500],
+    backgroundColor: blueGrey[400],
   }
 }));
+
+const LinkButton = withStyles(theme => ({
+  root: {
+    color: theme.palette.getContrastText(blueGrey[400]),
+  },
+}))(Button);
 
 const Layout = props => {
   const classes = useStyles();
@@ -26,20 +33,23 @@ const Layout = props => {
     <div>
       <CssBaseline />
       <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={10}>
+        <Grid container spacing={7}>
+          <Grid item xs={12}>
             <AppBar className={classes.heading}>
               <Toolbar>
-                <Grid item xs={1} />
-                <Typography variant="h2">SimplSearch</Typography>
+                <Grid container spacing={0}>
+                  <Grid item xs={11}>
+                    <Typography variant="h2">SimplSearch</Typography>
+                  </Grid>
+                  <Grid>
+                    <LinkButton style={{flex: 1}}>About</LinkButton>
+                  </Grid>
+                </Grid>
               </Toolbar>
             </AppBar>
             <Toolbar id="back-to-top-anchor" />
-            {/* <Typography variant='h3' className={classes.heading}>SimplSearch</Typography> */}
           </Grid>
-          <Grid item xs={12} />
-          <Grid item xs={1} />
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             {props.children}
           </Grid>
         </Grid>
