@@ -39,7 +39,7 @@ const Layout = props => {
               <Toolbar>
                 <Grid container spacing={0}>
                   <Grid item xs={11}>
-                    <Typography variant="h2">SimplSearch</Typography>
+                    <Typography variant="h3">SimplSearch</Typography>
                   </Grid>
                   <Grid>
                     <LinkButton style={{flex: 1}}>About</LinkButton>

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 import Layout from '../components/Layout';
-import Paper from '@material-ui/core/Paper';
+import fetch from 'isomorphic-unfetch';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
@@ -24,11 +24,11 @@ const Index = props => {
       <div>
         <SearchBar value={router.query.query}/>
         <br></br>
-        <Paper elevation={3}>
+        {/* <Paper elevation={3}> */}
           <div className={classes.container}>
             <SearchResults status={props.status} results={props.results} query={router.query.query} />
           </div>
-        </Paper>
+        {/* </Paper> */}
       </div> :
       <div>
         <Typography variant="h5">Enter a word or phrase to get started...</Typography>
