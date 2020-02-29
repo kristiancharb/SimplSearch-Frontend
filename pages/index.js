@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 import Layout from '../components/Layout';
+import BottomNavigation from '../components/BottomNavigation';
 import fetch from 'isomorphic-unfetch';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const baseUrl = 'http://localhost:8000';
+const apiBaseUrl = 'http://localhost:8000';
 
 const Index = props => {
   const router = useRouter();
@@ -26,12 +26,14 @@ const Index = props => {
         <br></br>
         <div className={classes.container}>
           <SearchResults status={props.status} results={props.results} query={router.query.query} />
+          <BottomNavigation />
         </div>
       </div> :
       <div>
         <SearchBar value={router.query.query}/>
       </div>
       }
+    
     </Layout>
   );
 };
@@ -45,7 +47,7 @@ Index.getInitialProps = async context => {
   }
 
   try {
-    const res = await fetch(`${baseUrl}/search/test`, {
+    const res = await fetch(`${apiBaseUrl}/search/test`, {
       method: 'post',
       body: JSON.stringify({
         query: context.query.query,
