@@ -13,14 +13,15 @@ const SearchBar = props => {
   const handleSubmit = event => {
     event.preventDefault();
     const query = value.toLowerCase();
-    window.location.href = `${window.origin}?query=${query}`;
+    window.location.href = `${window.origin}?query=${query}&start=0&end=10`;
   };
 
   return (
     <form onSubmit={handleSubmit} method='get'>
       <Grid container spacing={3}>
+        <Grid item xs={'auto'} />
         <Grid item xs={5}>
-          <TextField id="standard-basic" value={value} onChange={handleChange} fullWidth/>
+          <TextField id='standard-basic' label='Enter a word or phrase...' value={value} onChange={handleChange} fullWidth/>
         </Grid>
         <Grid item xs={2}>
           <Button type='submit' variant='outlined' fullWidth>Search</Button>

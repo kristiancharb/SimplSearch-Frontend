@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   heading: {
     paddingBottom:  theme.spacing(1),
     backgroundColor: blueGrey[400],
+  },
+  button: {
+    flex: 1, 
+    marginTop: theme.spacing(1),
   }
 }));
 
@@ -42,7 +46,7 @@ const Layout = props => {
                     <Typography variant="h3">SimplSearch</Typography>
                   </Grid>
                   <Grid>
-                    <LinkButton style={{flex: 1}}>About</LinkButton>
+                    <LinkButton className={classes.button}>About</LinkButton>
                   </Grid>
                 </Grid>
               </Toolbar>

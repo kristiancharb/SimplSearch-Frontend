@@ -24,16 +24,11 @@ const Index = props => {
       <div>
         <SearchBar value={router.query.query}/>
         <br></br>
-        {/* <Paper elevation={3}> */}
-          <div className={classes.container}>
-            <SearchResults status={props.status} results={props.results} query={router.query.query} />
-          </div>
-        {/* </Paper> */}
+        <div className={classes.container}>
+          <SearchResults status={props.status} results={props.results} query={router.query.query} />
+        </div>
       </div> :
       <div>
-        <Typography variant="h5">Enter a word or phrase to get started...</Typography>
-        <br></br>
-        <br></br>
         <SearchBar value={router.query.query}/>
       </div>
       }
@@ -54,7 +49,8 @@ Index.getInitialProps = async context => {
       method: 'post',
       body: JSON.stringify({
         query: context.query.query,
-        limit: 10
+        start: parseInt(context.query.start),
+        end: parseInt(context.query.end),
       }),
       headers: { 'Content-Type': 'application/json' }
     });
