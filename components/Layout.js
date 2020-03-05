@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import Link from '@material-ui/core/Link';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 
@@ -37,6 +38,7 @@ const Layout = props => {
   const isXs = useMediaQuery(theme.breakpoints.down('xs'));
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
   const headerVariant = isXs ? 'h4' : 'h3';
+  
   let headerXs;
   if (isSm) {
     headerXs = isXs ? 9 : 10;
@@ -54,10 +56,13 @@ const Layout = props => {
               <Toolbar>
                 <Grid container spacing={0}>
                   <Grid item xs={headerXs}>
-                    <Typography variant={headerVariant}> SimplSearch </Typography>
+                    {/* <Typography variant={headerVariant}> SimplSearch </Typography> */}
+                    <Link color='inherit' href='./' variant={headerVariant}>
+                      SimplSearch
+                    </Link>
                   </Grid>
                   <Grid>
-                    <LinkButton className={classes.button}> About </LinkButton>
+                    <LinkButton href='/about' className={classes.button}> About </LinkButton>
                   </Grid>
                 </Grid>
               </Toolbar>
