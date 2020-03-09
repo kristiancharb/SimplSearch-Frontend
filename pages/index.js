@@ -26,7 +26,7 @@ const Index = props => {
         <br></br>
         <div className={classes.container}>
           <SearchResults status={props.status} results={props.results} query={router.query.query} />
-          <BottomNavigation />
+          {props.status === 200 && <BottomNavigation />}
         </div>
       </div> :
       <div>
