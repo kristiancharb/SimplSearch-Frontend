@@ -34,6 +34,11 @@ const Result = props => {
     const docWords = props.contents.split(' ');
     const indices = getQueryTermIndices(docWords, queryWords);
     const ranges = getTermPreviewRanges(docWords, indices);
+    
+    if (Array.isArray(ranges) && ranges.length === 0) {
+      const preview = props.contents.length > 200 ? props.contents.substring(0, 200) : props.contents;
+      return <Typography className={classes.section} variant='body1'> {preview}... </Typography>;
+    }
     return renderTermPreviews(docWords, queryWords, ranges);
   };
 

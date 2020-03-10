@@ -31,15 +31,15 @@ const About = () => {
           publications. 
         </Typography>
         <Typography variant='body1' className={classes.section}>
-          SimplSearch uses an inverted index efficiently query its document set. It maintains
+          SimplSearch uses an inverted index to efficiently query its document set. It maintains
           a mapping of each unique term to all the documents that contain this term. 
         </Typography>
         <Typography variant='body1' className={classes.section}>
           To serve a search query, SimplSearch looks up each search term in the inverted index and merges 
           the document lists for each term. These documents are then ranked based on how
-          "similar" they are to the query. Similarity is measured using the tf-idf 
-          (Term Frequency - Inverse Document Frequency) score for each term in the query and the 
-          corresponding document.
+          "similar" they are to the query. To measure similarity, we construct a term vector for each document
+          and for the query. This term vector consists of the tf-idf (Term Frequency - Inverse Document Frequency) 
+          score for each term in the document/query. The similarity score is the cosine similarity of the two vectors.
         </Typography>
         <Typography variant='body1' className={classes.section}>
           - Kristian
