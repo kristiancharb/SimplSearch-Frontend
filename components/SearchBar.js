@@ -29,7 +29,7 @@ const SearchBar = props => {
           <TextField id='standard-basic' label='Enter a word or phrase...' value={value} onChange={handleChange} fullWidth/>
         </Grid>
         <Grid item xs={buttonXs}>
-          <Button type='submit' variant='outlined' fullWidth>Search</Button>
+          <Button type='submit' size='large' variant='outlined' style={{padding: '10px 21px'}} fullWidth>Search</Button>
         </Grid>
       </Grid>
     </form>
