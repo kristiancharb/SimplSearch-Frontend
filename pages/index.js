@@ -25,8 +25,15 @@ const Index = props => {
         <SearchBar value={router.query.query}/>
         <br></br>
         <div className={classes.container}>
-          <SearchResults status={props.status} results={props.results} query={router.query.query} />
-          {props.status === 200 && <BottomNavigation />}
+          <SearchResults 
+            status={props.status}
+            results={props.results}
+            numResults={props.numResults}
+            start={router.query.start}
+            end={router.query.end}
+            query={router.query.query}
+          />
+          {props.status === 200 && props.results && props.results.length > 0 && <BottomNavigation />}
         </div>
       </div> :
       <div>
@@ -66,7 +73,9 @@ Index.getInitialProps = async context => {
     }
 
     const data = await res.json();
+    console.log(data);
     return {
+      numResults: data.NumResults,
       results: data.Docs,
       status: 200,
     };

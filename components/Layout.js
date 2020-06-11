@@ -56,7 +56,6 @@ const Layout = props => {
               <Toolbar>
                 <Grid container spacing={0}>
                   <Grid item xs={headerXs}>
-                    {/* <Typography variant={headerVariant}> SimplSearch </Typography> */}
                     <Link color='inherit' href='./' variant={headerVariant}>
                       SimplSearch
                     </Link>
